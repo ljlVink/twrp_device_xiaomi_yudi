@@ -18,7 +18,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
 LOCAL_PATH := device/xiaomi/yudi
 
-PRODUCT_TARGET_VNDK_VERSION := 31
+PRODUCT_TARGET_VNDK_VERSION := 33
 BOARD_SHIPPING_API_LEVEL := 31
 BOARD_API_LEVEL := 31
 SHIPPING_API_LEVEL := 31
@@ -34,17 +34,19 @@ PRODUCT_PACKAGES += android.hardware.fastboot@1.1-impl-mock
 
 # A/B
 AB_OTA_UPDATER := true
+ENABLE_VIRTUAL_AB := true
 
 AB_OTA_PARTITIONS += \
-    system \
+    boot \
+    dtbo \
+    vbmeta \
     system \
     system_ext \
-    system_ext \
-    product \
     product \
     vendor \
-    vendor \
-    odm \
+    vendor_boot \
+    vbmeta_system \
+    vendor_dlkm \
     odm
 
 # Virtual A/B
@@ -90,7 +92,8 @@ PRODUCT_PACKAGES += \
     update_engine \
     update_verifier \
     update_engine_sideload
-
+PRODUCT_PACKAGES += \
+    bootctrl.xiaomi_sm8475
 # qcom decryption
 PRODUCT_PACKAGES += \
     qcom_decrypt \

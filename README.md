@@ -9,16 +9,14 @@
 #
 ```
 
-
-
 # Note: This will not function properly
 
-目前可以开机了，屏幕和fbe都有问题
+目前可以解密data了，但是屏幕还是有问题
 
 ```sh
 cd device\xiaomi\
 git clone https://github.com/ljlVink/twrp_device_xiaomi_yudi yudi
-mka recoveryimage -j72 
+make recoveryimage 
 ```
 
 ```sh
